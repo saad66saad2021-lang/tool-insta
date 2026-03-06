@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tool Insta</title>
+
+<style>
+
+body{
+background:#020202;
+font-family:Arial;
+color:white;
+text-align:center;
+margin:0;
+}
+
+h1{
+color:#ff0000;
+text-shadow:0 0 20px red;
+}
+
+button{
+
+background:black;
+border:1px solid red;
+color:red;
+padding:12px 25px;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+box-shadow:0 0 15px red;
+transition:0.3s;
+
+}
+
+button:hover{
+
+background:red;
+color:black;
+
+}
+
+.card{
+
+background:#0a0a0a;
+border:1px solid red;
+margin:20px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px red;
+
+}
+
+.tools{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;
+padding:20px;
+
+}
+
+.generator{
+
+margin-top:20px;
+
+}
+
+input{
+
+padding:10px;
+width:80%;
+background:black;
+border:1px solid red;
+color:white;
+
+}
+
+.ai{
+
+position:fixed;
+bottom:20px;
+right:20px;
+background:#0a0a0a;
+border:1px solid red;
+padding:15px;
+border-radius:10px;
+width:250px;
+box-shadow:0 0 20px red;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="welcome">
+
+<h1>مرحبا بك في Tool Insta</h1>
+
+<p>
+مرحبا بيك 👋<br>
+هاد الموقع فيه أفضل الأدوات لإنستغرام باش تطور الكونت ديالك.
+</p>
+
+<button onclick="enter()">دخول</button>
+
+<button>إنشاء حساب</button>
+
+</div>
+
+<div id="dashboard" style="display:none">
+
+<h1>Tool Insta Dashboard</h1>
+
+<p>
+تابع الحساب الرسمي باش توصلك الأدوات الجديدة
+</p>
+
+<div class="card">
+
+<img src="https://i.imgur.com/6VBx3io.png" width="120">
+
+<h2>saad_insta_tools</h2>
+
+<button onclick="follow()">Follow on Instagram</button>
+
+</div>
+
+<h2>Instagram Tools</h2>
+
+<div class="tools">
+
+<button onclick="showHashtag()">Hashtag Generator</button>
+
+<button onclick="showBio()">Bio Generator</button>
+
+<button onclick="showCaption()">Caption Generator</button>
+
+<button>Creator Tools</button>
+
+</div>
+
+<div class="generator" id="generator"></div>
+
+</div>
+
+<div class="ai">
+
+<h3>AI Assistant</h3>
+
+<p id="aiResponse">مرحبا! واش بغيتي مساعدة؟</p>
+
+<input type="text" id="question" placeholder="كتب السؤال">
+
+<button onclick="askAI()">إرسال</button>
+
+</div>
+
+<script>
+
+function enter(){
+
+document.getElementById("welcome").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+}
+
+function follow(){
+
+window.open("https://instagram.com/saad_insta_tools");
+
+}
+
+function showHashtag(){
+
+document.getElementById("generator").innerHTML=
+
+`
+<h2>Hashtag Generator</h2>
+
+<input id="topic" placeholder="اكتب الموضوع">
+
+<br><br>
+
+<button onclick="generateTags()">Generate</button>
+
+<p id="tags"></p>
+`;
+
+}
+
+function generateTags(){
+
+let topic=document.getElementById("topic").value;
+
+let tags=
+
+"#"+topic+" #instagram #viral #reels #explore #instagood #follow #likes #trending";
+
+document.getElementById("tags").innerText=tags;
+
+}
+
+function showBio(){
+
+document.getElementById("generator").innerHTML=
+
+`
+<h2>Bio Generator</h2>
+
+<button onclick="bio()">Generate Bio</button>
+
+<p id="bio"></p>
+`;
+
+}
+
+function bio(){
+
+let bios=[
+
+"🔥 Creator | Grow your Instagram",
+"🚀 Social Media Tools",
+"📈 Helping you grow fast",
+"👑 Instagram Growth Expert"
+
+];
+
+let random=bios[Math.floor(Math.random()*bios.length)];
+
+document.getElementById("bio").innerText=random;
+
+}
+
+function showCaption(){
+
+document.getElementById("generator").innerHTML=
+
+`
+<h2>Caption Generator</h2>
+
+<button onclick="caption()">Generate Caption</button>
+
+<p id="caption"></p>
+`;
+
+}
+
+function caption(){
+
+let captions=[
+
+"Never stop growing 🚀",
+"Dream big work hard 🔥",
+"Success is coming 💯",
+"Stay focused and win 🏆"
+
+];
+
+let random=captions[Math.floor(Math.random()*captions.length)];
+
+document.getElementById("caption").innerText=random;
+
+}
+
+function askAI(){
+
+let q=document.getElementById("question").value;
+
+let r="";
+
+if(q.includes("هاشتاغ"))
+
+r="استعمل Hashtag Generator للحصول على أفضل الهاشتاغات.";
+
+else if(q.includes("بايو"))
+
+r="Bio Generator يصنع لك بايو احترافي.";
+
+else if(q.includes("كابشن"))
+
+r="Caption Generator يعطيك وصف قوي للمنشورات.";
+
+else
+
+r="Tool Insta فيه أدوات قوية لتطوير حسابك.";
+
+document.getElementById("aiResponse").innerText=r;
+
+}
+
+</script>
+
+<footer style="margin-top:50px;padding:20px;border-top:1px solid red">
+
+Tool Insta © 2026
+
+</footer>
+
+</body>
+
+  </html>
